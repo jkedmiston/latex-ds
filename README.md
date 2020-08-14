@@ -1,2 +1,4 @@
-# latex-reports
-PDF generator for latex docs. 
+# Latex-DS
+Python based generator for latex docs. 
+
+
