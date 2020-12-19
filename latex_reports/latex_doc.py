@@ -2,6 +2,7 @@ import os
 from latex_reports.latex_text import LatexText
 from latex_reports.latex_figure import LatexFigure
 
+
 class LatexDoc:
     doc = r"""
 \documentclass[12pt]{article}
@@ -26,7 +27,7 @@ class LatexDoc:
         \usepackage{booktabs}
         \usepackage{fullpage}
         \usepackage{subfig}"""
-        
+
         pass
 
     def clean_fname(self, fname):
@@ -35,13 +36,13 @@ class LatexDoc:
         if fname[-4:] == ".pdf":
             fname = fname[:-4]
         return fname
-    
+
     def pdfname(self):
         return self.fname + ".pdf"
 
     def add_figure(self, figname, caption=None):
         self.add_contents(LatexFigure(figname, caption=caption))
-        
+
     def add_preamble(self, txt):
         self.preamble.append(txt)
 
@@ -79,4 +80,6 @@ class LatexDoc:
         print(f.name)
         info = dict(d=os.path.dirname(self.fname),
                     t=self.fname + '.tex')
-        os.system("pdflatex -output-directory %(d)s %(t)s" % info)
+        out = os.system("pdflatex -output-directory %(d)s %(t)s" % info)
+        if out == 0:
+            return self.fname + '.pdf'
