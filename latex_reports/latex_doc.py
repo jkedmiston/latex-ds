@@ -74,7 +74,7 @@ class LatexDoc:
         contents = contents[:-1]
         doc = self.doc % dict(preamble=self.preamble,
                               contents=contents,
-                              variables=self.variables)
+                              variables='\n'.join(self.variables))
         f = open(self.fname + ".tex", "w")
         f.write(doc)
         f.close()
