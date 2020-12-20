@@ -13,7 +13,7 @@ class LatexDoc:
 \end{document}
     """
 
-    def __init__(self, fname):
+    def __init__(self, fname, preamble=None):
         self.preamble = []
         self.contents = []
         self.variables = []
@@ -27,7 +27,8 @@ class LatexDoc:
         \usepackage{booktabs}
         \usepackage{fullpage}
         \usepackage{subfig}"""
-
+        if preamble is not None and isinstance(preamble, str):
+            self.preamble = preamble
         pass
 
     def clean_fname(self, fname):
