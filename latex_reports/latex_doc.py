@@ -82,6 +82,9 @@ class LatexDoc:
         print(f.name)
         info = dict(d=os.path.dirname(self.fname),
                     t=self.fname + '.tex')
-        out = os.system("pdflatex -output-directory %(d)s %(t)s" % info)
+        for j in range(2):
+            out = os.system("pdflatex -output-directory %(d)s %(t)s" % info)
+            if out == 0:
+                continue
         if out == 0:
             return self.fname + '.pdf'
