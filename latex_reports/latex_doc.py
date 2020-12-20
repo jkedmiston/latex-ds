@@ -41,8 +41,9 @@ class LatexDoc:
     def pdfname(self):
         return self.fname + ".pdf"
 
-    def add_figure(self, figname, caption=None):
-        self.add_contents(LatexFigure(figname, caption=caption))
+    def add_figure(self, figname, caption=None, label=None, width=1):
+        self.add_contents(LatexFigure(
+            figname, caption=caption, label=label, width=width))
 
     def add_preamble(self, txt):
         self.preamble.append(txt)
