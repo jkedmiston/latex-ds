@@ -26,6 +26,8 @@ class LatexDoc:
         \usepackage{graphicx}
         \usepackage{booktabs}
         \usepackage{fullpage}
+        \usepackage{hyperref}
+        \usepackage[T1]{fontenc}
         \usepackage{subfig}"""
         if preamble is not None and isinstance(preamble, str):
             self.preamble = preamble
