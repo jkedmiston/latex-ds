@@ -80,7 +80,11 @@ class LatexDoc:
         f.write(doc)
         f.close()
         print(f.name)
-        info = dict(d=os.path.dirname(self.fname),
+        dirname = os.path.dirname(self.fname)
+        if dirname == '':
+            dirname = '.'
+
+        info = dict(d=dirname,
                     t=self.fname + '.tex')
         for j in range(2):
             out = os.system("pdflatex -output-directory %(d)s %(t)s" % info)
