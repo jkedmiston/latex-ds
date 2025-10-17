@@ -1,4 +1,4 @@
-FROM python:3.7-buster
+FROM python:3.11-bullseye
 
 WORKDIR /app
 
@@ -10,6 +10,6 @@ RUN pip install -r requirements.txt
 
 COPY . .
 
-ENV PYTHONPATH "${PYTHONPATH}:/app"
+ENV PYTHONPATH="${PYTHONPATH}:/app"
 
 CMD [ "tail -f /dev/null" ]
